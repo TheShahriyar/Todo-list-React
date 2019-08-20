@@ -27,15 +27,12 @@ export default class App extends Component {
 
     const updatedItem = [...this.state.items, newItem];
 
-    this.setState(
-      {
-        items: updatedItem,
-        item: "",
-        id: uuid(),
-        editItem: false
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      items: updatedItem,
+      item: "",
+      id: uuid(),
+      editItem: false
+    });
   };
   clearList = () => {
     this.setState({
@@ -43,13 +40,20 @@ export default class App extends Component {
     });
   };
   handleDelete = id => {
-    const filteredItem = this.state.items.filter(item => item.id != id);
+    const filteredItem = this.state.items.filter(item => item.id !== id);
     this.setState({
       items: filteredItem
     });
   };
   handleEdit = id => {
-    console.log(`Handle Edit ${id}`);
+    const filteredItem = this.state.items.filter(item => item.id !== id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+    this.setState({
+      items: filteredItem,
+      item: selectedItem.title,
+      id: id,
+      editItem: true
+    });
   };
 
   render() {

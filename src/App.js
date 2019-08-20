@@ -38,10 +38,15 @@ export default class App extends Component {
     );
   };
   clearList = () => {
-    console.log("Clear List");
+    this.setState({
+      items: []
+    });
   };
   handleDelete = id => {
-    console.log(`Handle delete ${id}`);
+    const filteredItem = this.state.items.filter(item => item.id != id);
+    this.setState({
+      items: filteredItem
+    });
   };
   handleEdit = id => {
     console.log(`Handle Edit ${id}`);

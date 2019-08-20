@@ -15,7 +15,7 @@ export default class TodoInput extends Component {
             <input
               type="text"
               className="form-control"
-              id="inlineFormInputGroupUsername2"
+              id="todoInput"
               placeholder="Add to do item"
               value={item}
               onChange={handleChange}
